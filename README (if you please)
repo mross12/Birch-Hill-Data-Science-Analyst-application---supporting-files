@@ -1,0 +1,13 @@
+# Birch-Hill-Data-Science-Analyst-application---supporting-files
+
+Within these folders you can find two sample projects of mine, written in Python.
+
+The first is a data scraper and value investing analyzer for publicly traded companies on the TSX and TSX Venture exchange. The scraper pulls financial statement data from YahooFinance, for which the data is then used to run a basic net-net analysis (cash less liabilities) relative to share price.
+
+The second project is a piece of code to generate a random dataset as supporting material for an Ivey Microsoft case.
+
+You can see more details on each project in the README files in each folder; email me @ macgregor.ross94@gmail.com if you have any questions.
+
+Cheers!
+
+Mac
