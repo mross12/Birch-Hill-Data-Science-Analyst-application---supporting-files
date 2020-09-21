@@ -1,0 +1,74 @@
+#!/usr/bin/env python
+# coding: utf-8
+
+# In[1]:
+
+
+import requests
+import pprint
+from bs4 import BeautifulSoup
+from datetime import datetime as dt
+import pandas as pd
+import csv
+import os
+
+
+# In[2]:
+
+
+#the analyzer - a basic example of how to use this data
+
+
+# In[3]:
+
+
+os.getcwd()
+os.chdir('C:/Users/Mac/Desktop/Investing/Financial Data')
+
+
+# In[7]:
+
+
+#Reading and wrangling file
+
+ticker_list_tsxv = []
+stock_data_df = pd.read_csv('Venture_Data_Final - Copy.csv')
+stock_data_df
+
+stock_data_df = stock_data_df.drop('Unnamed: 0', 1)
+
+
+# In[8]:
+
+
+#identify rows with no data on shares outstanding
+
+indexNames = stock_data_df[stock_data_df['Shares Outstanding'] < .001].index
+stock_data_df.drop(indexNames , inplace=True)
+
+
+# In[6]:
+
+
+#transform data to account for thousands
+
+stock_data_df['Total Cash'] = stock_data_df['Total Cash'].apply(lambda x: x*1000)
+stock_data_df['Total Liabilities'] = stock_data_df['Total Liabilities'].apply(lambda x: x*1000)
+stock_data_df['Total Revenue'] = stock_data_df['Total Revenue'].apply(lambda x: x*1000)
+stock_data_df['Operating Cash Flow'] = stock_data_df['Operating Cash Flow'].apply(lambda x: x*1000)
+
+
+# In[8]:
+
+
+#calculate net-net per share value of each company;
+#subtract and divide by price to get relative indicator of a company's attractiveness relative to net cash position and price
+#finally, sort by those companies with the highest net-net position relative to price
+
+pd.set_option('display.float_format', lambda x: '%.3f' % x)
+stock_data_df['Net Net per Share'] = (stock_data_df['Total Cash'] - stock_data_df['Total Liabilities'])/stock_data_df['Shares Outstanding']
+stock_data_df['NNPS less Price as % of Price'] = (stock_data_df['Net Net per Share'] - stock_data_df['Price'])/stock_data_df['Price']
+
+stock_data_df = stock_data_df.sort_values(by = ['NNPS less Price as % of Price'], ascending = False)
+pd.set_option('display.min_rows', 50)
+stock_data_df
