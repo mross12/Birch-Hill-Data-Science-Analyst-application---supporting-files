@@ -39,7 +39,7 @@ os.getcwd()
 #Reading file
 ticker_list_tsxv = []
 
-with open('TSX2.csv', 'r') as file:
+with open('TSXV Tickers - Input File.csv', 'r') as file:
     csv_file = csv.reader(file)
     for row in csv_file:
         ticker_list_tsxv.append(row)
