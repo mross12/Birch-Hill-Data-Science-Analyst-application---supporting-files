@@ -4,7 +4,7 @@ The goal of this project is to source reliable data on publicly traded TSX and T
 
 This project is still a work in progress, as only selected financial statement data has been pulled by the scraping tool, and a limited net-net to price analysis conducted by the analyzer.
 
-To run these files, first download and run the files in the "Data Scraper" folder. You will need to adjust the code to account for the input file (the list of tickers for the TSX.V).
+To run these files, first download and run the files in the "Data Scraper" folder. You will need to adjust the code to account for the input file (the list of tickers for the TSX.V)
 
 Alternatively, a sample output of the scraper tool is contained in the "Data Scraper" folder. This file can be used to run the file in the "Analysis" folder, which results in a ranking of Venture companies according to their net-net cash per share relative to price.
 
