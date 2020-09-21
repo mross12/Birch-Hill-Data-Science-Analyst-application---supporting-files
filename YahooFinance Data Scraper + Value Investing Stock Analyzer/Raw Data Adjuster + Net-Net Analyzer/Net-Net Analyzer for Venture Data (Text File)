@@ -32,7 +32,7 @@ os.chdir('C:/Users/Mac/Desktop/Investing/Financial Data')
 #Reading and wrangling file
 
 ticker_list_tsxv = []
-stock_data_df = pd.read_csv('Venture_Data_Final - Copy.csv')
+stock_data_df = pd.read_csv('Venture_Data_Final - Output File.csv')
 stock_data_df
 
 stock_data_df = stock_data_df.drop('Unnamed: 0', 1)
